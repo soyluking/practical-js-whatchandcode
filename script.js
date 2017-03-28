@@ -1,7 +1,16 @@
 var todoList = {
   todos: [],
   displayTodos: function() {
-    console.log('My ToDo\'s:', this.todos);
+    if ( this.todos.length ) {
+      console.log('My ToDo\'s:');
+
+      for (var i = 0; i < this.todos.length; i++) {
+        console.log(this.todos[i].todoText + ', Completed: ' + this.todos[i].completed);
+      }
+    }
+    else {
+      console.log('You don\'t have todo yet');
+    }
   },
   addTodo: function(todoText) {
     this.todos.push({
