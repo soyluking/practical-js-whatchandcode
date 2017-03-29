@@ -49,11 +49,9 @@ var todoList = {
     }
 
     for ( var i = 0; i < totalTodos; i++ ) {
-      // If all tasks are true completed make false
       if ( completedTodos === totalTodos ) {
         this.todos[i].completed = false;
       }
-      // If all tasks are false completed make true
       else {
         this.todos[i].completed = true;
       }
@@ -62,3 +60,14 @@ var todoList = {
     this.displayTodos();
   }
 };
+
+var displayTodosButton = document.getElementById('displayTodosButton');
+var toggleAllButton = document.getElementById('toggleAllButton');
+
+displayTodosButton.addEventListener('click', function() {
+  todoList.displayTodos();
+});
+
+toggleAllButton.addEventListener('click', function() {
+  todoList.toggleAll();
+});
