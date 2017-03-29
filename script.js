@@ -1,15 +1,20 @@
 var todoList = {
   todos: [],
   displayTodos: function() {
-    if ( this.todos.length ) {
-      console.log('My ToDo\'s:');
-
-      for (var i = 0; i < this.todos.length; i++) {
-        console.log(this.todos[i].todoText + ', Completed: ' + this.todos[i].completed);
-      }
+    if ( this.todos.length === 0 ) {
+      console.log('Your todo list is empty!');
     }
     else {
-      console.log('You don\'t have todo yet');
+      console.log('My ToDo\'s:');
+
+      for ( var i = 0; i < this.todos.length; i++ ) {
+        if ( this.todos[i].completed ) {
+          console.log('(x)', this.todos[i].todoText);
+        }
+        else {
+          console.log('( )', this.todos[i].todoText);
+        }
+      }
     }
   },
   addTodo: function(todoText) {
@@ -28,10 +33,32 @@ var todoList = {
     this.displayTodos();
   },
   toggleCompleted: function(position) {
-    var todo = this.todos[position].completed;
-    console.log('1',todo);
-    todo = !todo;
-    console.log('2',todo);
+    var todo = this.todos[position];
+    todo.completed = !todo.completed;
+    this.displayTodos();
+  },
+  toggleAll: function() {
+    var completedTodos = 0;
+    var totalTodos = this.todos.length;
+
+    // Get number of completed todos
+    for ( var i = 0; i < totalTodos; i++ ) {
+      if ( this.todos[i].completed ) {
+        completedTodos++;
+      }
+    }
+
+    for ( var i = 0; i < totalTodos; i++ ) {
+      // If all tasks are true completed make false
+      if ( completedTodos === totalTodos ) {
+        this.todos[i].completed = false;
+      }
+      // If all tasks are false completed make true
+      else {
+        this.todos[i].completed = true;
+      }
+    }
+
     this.displayTodos();
   }
 };
