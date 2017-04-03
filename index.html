@@ -10,8 +10,21 @@
   <body>
     <h1>ToDo List</h1>
 
-    <button onclick="handlers.displayTodos()">Display Todos</button>
-    <button onclick="handlers.toggleAll()">Toggle All</button>
+    <div>
+      <button onclick="handlers.displayTodos()">Display Todos</button>
+      <button onclick="handlers.toggleAll()">Toggle All</button>
+    </div>
+
+    <div>
+      <button onclick="handlers.addTodo()">Add Todo</button>
+      <input id="addTodoTextInput" type="text">
+    </div>
+
+    <div>
+      <button>Change Todo</button>
+      <input type="text">
+      <input type="text">
+    </div>
 
     <script src="script.js"></script>
   </body>
